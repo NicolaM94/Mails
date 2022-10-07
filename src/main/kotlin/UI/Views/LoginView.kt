@@ -1,10 +1,14 @@
 package UI.Views
 
+import Controllers.LoginController
 import javafx.geometry.Pos
 import javafx.scene.text.FontWeight
 import tornadofx.*
 
 class LoginView :View (title = "MailS") {
+
+    val loginController :LoginController by inject()
+
     override val root = vbox {
         imageview (url = "Mails1.png") {
             fitHeight = 350.0
@@ -18,8 +22,8 @@ class LoginView :View (title = "MailS") {
                 alignment = Pos.CENTER
             }
             fieldset ("Login") {
-                field ("Username") { textfield () }
-                field ("Password") { passwordfield {  } }
+                field ("Username") { textfield (loginController.usernameHolder) }
+                field ("Password") { passwordfield (loginController.passwordHolder) }
             }
         }
         vbox {
@@ -28,10 +32,15 @@ class LoginView :View (title = "MailS") {
                 alignment = Pos.CENTER
                 spacing = Dimension(1.0,Dimension.LinearUnits.em)
             }
-            button ("Verify") {
+            button ("LogIn") {
                 style {
                     fontWeight = FontWeight.BOLD
                     prefWidth = Dimension(15.0,Dimension.LinearUnits.em)
+                }
+                action {
+                    loginController.verifyPasswdMatch();
+                    loginController.verifyUsernameTaken();
+
                 }
             }
             button ("New User") {

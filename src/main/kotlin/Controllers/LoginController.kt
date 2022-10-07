@@ -13,7 +13,7 @@ class LoginController :Controller() {
     val users = mutableListOf<String>()
     val passwords = mutableListOf<String>()
 
-    val databaseConnection =
+
 
     /**Verifies if user is already taken*/
     fun verifyUsernameTaken():Boolean{
