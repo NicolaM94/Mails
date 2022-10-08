@@ -7,13 +7,13 @@ import kotlinx.serialization.json.Json
 import java.io.File
 
 @Serializable
-class LoginCreadentials (userName: String, password: String)
+class LoginCreadential (val userName: String)
 
 class CredentialParsers () {
 
     fun parse () {
         val input = File("src/main/kotlin/logins.json").reader()
-
+        return Json.decodeFromString(input.toString())
     }
 }
 
