@@ -21,6 +21,7 @@ dependencies {
     implementation 'no.tornado:tornadofx:1.7.20'
     // https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc
     implementation 'org.xerial:sqlite-jdbc:3.39.3.0'
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0"
 
 }
 

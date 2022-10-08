@@ -1,6 +1,5 @@
-package UI.Views
+package ui.views
 
-import javafx.scene.Parent
 import tornadofx.*
 
 class MainView :View() {

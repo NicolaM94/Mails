@@ -1,4 +1,4 @@
-package UI.Views
+package ui.views
 
 import tornadofx.*
 

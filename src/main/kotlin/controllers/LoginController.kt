@@ -1,9 +1,8 @@
-package Controllers
+package controllers
 
 import javafx.beans.property.SimpleStringProperty
 import tornadofx.*
 import java.security.MessageDigest
-import java.sql.DriverManager
 
 class LoginController :Controller() {
 

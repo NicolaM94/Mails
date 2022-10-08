@@ -1,4 +1,4 @@
-import UI.Views.LoginView
+import ui.views.LoginView
 import tornadofx.*
 
 class Engine :App(LoginView::class) {

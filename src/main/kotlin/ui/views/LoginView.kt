@@ -1,6 +1,6 @@
-package UI.Views
+package ui.views
 
-import Controllers.LoginController
+import controllers.LoginController
 import javafx.geometry.Pos
 import javafx.scene.text.FontWeight
 import tornadofx.*
