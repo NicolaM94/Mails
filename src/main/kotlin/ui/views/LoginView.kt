@@ -11,6 +11,16 @@ class LoginView :View (title = "MailS") {
 
     val loginController :LoginController by inject()
 
+    fun verifyLogin () {
+        when {
+            !loginController.verifyUsername() -> openInternalWindow(ui.snippets.MissingUsername::class)
+            !loginController.verifyPassword() -> openInternalWindow(ui.snippets.WrongPassword::class)
+            //!loginController.verifyPasswdMatch() -> openInternalWindow(ui.snippets.PasswordMismatch::class)
+            //!loginController.verifyUsernameTaken() -> openInternalWindow(ui.snippets.UsernameAlreadyTaken::class)
+            else -> replaceWith<MainView>()
+        }
+    }
+
     override val root = vbox {
         style {
             backgroundColor += Paint.valueOf("#FFE184")
@@ -43,9 +53,7 @@ class LoginView :View (title = "MailS") {
                     prefWidth = Dimension(15.0,Dimension.LinearUnits.em)
                 }
                 action {
-                    loginController.verifyPasswdMatch();
-                    loginController.verifyUsernameTaken();
-
+                    verifyLogin()
                 }
             }
             button ("New User") {
