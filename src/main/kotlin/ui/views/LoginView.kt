@@ -2,6 +2,8 @@ package ui.views
 
 import controllers.LoginController
 import javafx.geometry.Pos
+import javafx.scene.paint.Color
+import javafx.scene.paint.Paint
 import javafx.scene.text.FontWeight
 import tornadofx.*
 
@@ -10,6 +12,9 @@ class LoginView :View (title = "MailS") {
     val loginController :LoginController by inject()
 
     override val root = vbox {
+        style {
+            backgroundColor += Paint.valueOf("#FFE184")
+        }
         imageview (url = "Mails1.png") {
             fitHeight = 350.0
             fitWidth = 350.0
@@ -52,10 +57,15 @@ class LoginView :View (title = "MailS") {
                     prefWidth = Dimension(15.0,Dimension.LinearUnits.em)
                 }
             }
+            button ("About") {
+                style {
+                    prefWidth = Dimension(15.0,Dimension.LinearUnits.em)
+                }
+                action { replaceWith<AboutView>() }
+            }
             button ("Quit") {
                 action {close() }
                 style {
-                    fontWeight = FontWeight.BOLD
                     prefWidth = Dimension(10.0,Dimension.LinearUnits.em)
                 }
             }

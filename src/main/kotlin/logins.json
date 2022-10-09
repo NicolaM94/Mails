@@ -1,4 +1,10 @@
-{
-  "NicolaM94":"szlaboda",
-  "SilviaM99":"cicciopasticcio"
-}
+[
+  {
+    "username": "NicolaM94",
+    "password": "szlaboda"
+  },
+  {
+    "username": "Silvia",
+    "password": "cicciopasticcio"
+  }
+]

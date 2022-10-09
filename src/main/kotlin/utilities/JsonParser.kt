@@ -1,22 +1,10 @@
 package utilities
 
-import kotlinx.serialization.DeserializationStrategy
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.json.Json
+import com.google.gson.Gson
 import java.io.File
 
-@Serializable
-class LoginCreadential (val userName: String)
-
-class CredentialParsers () {
-
-    fun parse () {
-        val input = File("src/main/kotlin/logins.json").reader()
-        return Json.decodeFromString(input.toString())
-    }
-}
-
-fun main () {
-    println(CredentialParsers().parse().toString())
+fun main() {
+    val gson = Gson()
+    val reader = File("logins.json").reader()
+    println(gson.toJson(reader))
 }
