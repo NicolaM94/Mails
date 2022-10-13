@@ -48,16 +48,19 @@ object LoginManager {
  */
 class LoginController :Controller() {
 
+    val keygen = "1234567890"
+    val currentData = LoginManager
+
     var usernameHolder = SimpleStringProperty()
     var passwordHolder = SimpleStringProperty()
     var passwordRepetedHolder = SimpleStringProperty()
-    val passwords = mutableListOf<String>()
-    val loginManager = LoginManager
+    var keygenHolder = SimpleStringProperty()
+
 
 
     /**Verifies if user is already taken*/
     fun verifyUsernameTaken():Boolean{
-        return usernameHolder.value in LoginManager.users()
+        return usernameHolder.value in currentData.users()
     }
 
     /** Verifies password match*/
@@ -73,12 +76,11 @@ class LoginController :Controller() {
     }
 
     fun verifyUsername() :Boolean {
-        return usernameHolder.value in LoginManager.users()
+        return usernameHolder.value in currentData.users()
     }
 
-    init {
-
+    fun verifyKeygen () :Boolean {
+        return keygen == keygenHolder.value
     }
-
 
 }

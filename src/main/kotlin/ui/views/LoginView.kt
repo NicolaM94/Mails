@@ -15,8 +15,6 @@ class LoginView :View (title = "MailS") {
         when {
             !loginController.verifyUsername() -> openInternalWindow(ui.snippets.MissingUsername::class)
             !loginController.verifyPassword() -> openInternalWindow(ui.snippets.WrongPassword::class)
-            //!loginController.verifyPasswdMatch() -> openInternalWindow(ui.snippets.PasswordMismatch::class)
-            //!loginController.verifyUsernameTaken() -> openInternalWindow(ui.snippets.UsernameAlreadyTaken::class)
             else -> replaceWith<MainView>()
         }
     }
@@ -69,7 +67,8 @@ class LoginView :View (title = "MailS") {
                 style {
                     prefWidth = Dimension(15.0,Dimension.LinearUnits.em)
                 }
-                action { replaceWith<AboutView>() }
+                //TODO: Create AboutView with info
+                action {  }
             }
             button ("Quit") {
                 action {close() }
