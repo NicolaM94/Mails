@@ -1,6 +1,7 @@
 package ui.views
 
 import controllers.LoginController
+import logic.LoginCredentials
 import tornadofx.*
 import ui.snippets.KeygenVerification
 import ui.snippets.PasswordMismatch
@@ -13,7 +14,7 @@ class NewUserView :View() {
     //TODO Continue from here, finish implementing the new user creation process
     fun verifyNewUser () :Boolean {
         when {
-            !controller.verifyUsernameTaken() -> {
+            controller.verifyUsernameTaken() -> {
                 openInternalWindow(UsernameAlreadyTaken::class)
                 return false
             }
@@ -27,6 +28,13 @@ class NewUserView :View() {
             }
             else -> {
                 println("Checks passed")
+                println("Writing changes...")
+                controller.currentData.addCredentials(LoginCredentials(
+                    controller.usernameHolder.value,
+                    controller.passwordHolder.value
+                ))
+                controller.currentData.writeChanges()
+                replaceWith(LoginView::class)
             }
         }
         return true
