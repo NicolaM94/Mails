@@ -17,4 +17,5 @@ class MailController :Controller() {
         mailBase = gson.fromJson(reader,token)
         println(mailBase)
         }
+
 }
