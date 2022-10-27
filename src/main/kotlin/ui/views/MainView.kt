@@ -26,9 +26,17 @@ class MainView :View() {
             }
             button ("Simple mail")
             button ("Programmed mail")
-            button ("Settings")
-            button ("Info")
-            button ("Quit")
+            button ("Settings") {
+                action {
+                    replaceWith(SettingsView::class)
+                }
+            }
+            button ("Info") {
+                action { replaceWith(AboutView::class) }
+            }
+            button ("Quit") {
+                action { close() }
+            }
         }
     }
 }

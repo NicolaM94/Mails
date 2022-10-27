@@ -67,8 +67,7 @@ class LoginView :View (title = "MailS") {
                 style {
                     prefWidth = Dimension(15.0,Dimension.LinearUnits.em)
                 }
-                //TODO: Create AboutView with info
-                action {  }
+                action { replaceWith (AboutView::class)  }
             }
             button ("Quit") {
                 action {close() }
