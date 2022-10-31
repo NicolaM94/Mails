@@ -9,6 +9,7 @@ import java.io.File
 class MailController :Controller() {
 
     //TODO: recipients key must be a list of strings, not a string. See mails.json file
+    //TODO: add sign
     var mailBase = mutableListOf<MailObject>()
 
     val gson = Gson()

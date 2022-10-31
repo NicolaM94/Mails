@@ -18,7 +18,7 @@ class MainView :View() {
                     form {
                         fieldset (it.subject) {
                             field { label(it.body) }
-                            field ("Recipients: ") { label (it.recipients) }
+                            field ("Recipients: ") { label (it.recipients.toString()) }
                             field ("Planned for: "){ label(it.plannedFor) }
                         }
                     }
@@ -27,6 +27,7 @@ class MainView :View() {
         }
 
         right = vbox {
+
             style {
                 borderColor += CssBox(Paint.valueOf("#000000"),Paint.valueOf("#000000"),Paint.valueOf("#000000"),Paint.valueOf("#000000"))
                 alignment = Pos.TOP_CENTER
@@ -34,7 +35,8 @@ class MainView :View() {
                 spacing = Dimension(2.0,Dimension.LinearUnits.em)
                 paddingAll = 50.0
             }
-            button ("Simple mail")
+
+            button ("Simple mail") {action { replaceWith(SimpleMailView::class) }}
             button ("Programmed mail")
             button ("Settings") {
                 action {
@@ -47,6 +49,7 @@ class MainView :View() {
             button ("Quit") {
                 action { close() }
             }
+
         }
     }
 }
