@@ -1,19 +1,29 @@
 package ui.views
 
+import controllers.MailController
 import javafx.geometry.Pos
 import javafx.scene.paint.Color
 import javafx.scene.paint.Paint
 import tornadofx.*
 
 class MainView :View() {
+
+    val controller :MailController by inject()
+
     override val root = borderpane {
 
-        center = hbox {
-            style {
-                borderColor += CssBox(Paint.valueOf("#000000"),Paint.valueOf("#000000"),Paint.valueOf("#000000"),Paint.valueOf("#000000"))
-                baseColor = Color.YELLOW
+        center = listview (controller.mailBase.asObservable()) {
+            cellFormat {
+                graphic = cache {
+                    form {
+                        fieldset (it.subject) {
+                            field { label(it.body) }
+                            field ("Recipients: ") { label (it.recipients) }
+                            field ("Planned for: "){ label(it.plannedFor) }
+                        }
+                    }
+                }
             }
-            text ("First Hbox"){  }
         }
 
         right = vbox {

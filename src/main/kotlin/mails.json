@@ -1,3 +1,17 @@
 [
+  {
 
+    "recipients": "nicola.moro@live.it",
+    "subject": "Un saluto",
+    "body": "Ecco il mio saluto",
+    "attachments": "Nessun allegato",
+    "plannedFor": "No"
+  },
+  {
+    "recipients": "nicola.moro@live.it",
+    "subject": "Un saluto",
+    "body": "Ecco il mio saluto",
+    "attachments": "Nessun allegato",
+    "plannedFor": "No"
+  }
 ]

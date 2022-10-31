@@ -9,7 +9,13 @@ class SettingsView :View() {
 
     val controller : SettingsController by inject()
 
-    override val root = hbox {
+    override val root = vbox {
+
+        style {
+            spacing = Dimension(2.0,Dimension.LinearUnits.em)
+            paddingAll = 15.0
+        }
+
         form {
             fieldset ("Address info") {
                 field ("Sender address") { textfield(controller.senderAddress) }

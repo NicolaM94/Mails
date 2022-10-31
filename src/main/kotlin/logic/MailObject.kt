@@ -8,5 +8,5 @@ class MailObject (
     val subject: String,
     val body: String,
     val attachments :String,
-    val moment :String
+    val plannedFor :String
         )
