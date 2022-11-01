@@ -2,6 +2,7 @@ package ui.views
 
 import controllers.SettingsController
 import javafx.scene.Parent
+import javafx.scene.paint.Color
 import tornadofx.*
 import java.io.File
 
@@ -14,6 +15,7 @@ class SettingsView :View() {
         style {
             spacing = Dimension(2.0,Dimension.LinearUnits.em)
             paddingAll = 15.0
+            baseColor = Color.web("#c1d3ff")
         }
 
         form {
@@ -28,6 +30,9 @@ class SettingsView :View() {
             }
         }
         button ("Save and exit") {
+            style {
+                baseColor = Color.web("#2e2be2")
+            }
             action {
                 with (File("src/main/kotlin/settings")) {
                     this.writeText(controller.senderAddress.value+"\n")
@@ -37,7 +42,12 @@ class SettingsView :View() {
                 };replaceWith(MainView::class)
             }
         }
-        button ("Exit") {action { replaceWith(MainView::class) }}
+        button ("Exit") {
+            style {
+                baseColor = Color.web("#2e2be2")
+            }
+            action { replaceWith(MainView::class) }
+        }
     }
 
 
