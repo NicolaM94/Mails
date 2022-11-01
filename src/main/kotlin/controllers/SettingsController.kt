@@ -7,10 +7,15 @@ import java.io.File
 
 class SettingsController :Controller() {
 
+    //Address settings hooks
     val senderAddress = SimpleStringProperty()
     val senderPassword = SimpleStringProperty()
     val senderServer = SimpleStringProperty()
     val senderPort = SimpleIntegerProperty()
+
+    //Mail settings hooks
+    val defaultSign = SimpleStringProperty()
+
 
     init {
         with(File("src/main/kotlin/settings")) {

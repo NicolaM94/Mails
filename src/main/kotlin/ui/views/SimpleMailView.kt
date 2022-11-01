@@ -1,9 +1,14 @@
 package ui.views
 
+import controllers.MailController
+import controllers.SettingsController
 import javafx.scene.Parent
 import tornadofx.*
 
 class SimpleMailView :View() {
+
+    val mailController :MailController by inject()
+    val settingsController :SettingsController by inject()
 
     override val root = vbox {
         style {
@@ -13,7 +18,7 @@ class SimpleMailView :View() {
         textfield { promptText = "Subject" }
         htmleditor {
             //TODO: Add sign
-            htmlText = "<br><br><h1>Ciao</h1>"
+            htmlText = "<br><br>" + settingsController.defaultSign
         }
         hbox {
             button ("Add attachments")

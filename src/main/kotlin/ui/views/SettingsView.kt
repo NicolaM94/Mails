@@ -17,11 +17,14 @@ class SettingsView :View() {
         }
 
         form {
-            fieldset ("Address info") {
+            fieldset ("Address settings") {
                 field ("Sender address") { textfield(controller.senderAddress) }
                 field ("Sender password") {passwordfield (controller.senderPassword) }
                 field ("Sender SMTP server") { textfield (controller.senderServer) }
                 field ("Sender SMTP port") { textfield(controller.senderPort) }
+            }
+            fieldset ("Mail settings") {
+                field ("Default sign") { textfield(controller.defaultSign).promptText = "Copy HTML sign here" }
             }
         }
         button ("Save and exit") {
