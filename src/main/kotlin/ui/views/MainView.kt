@@ -38,6 +38,7 @@ class MainView :View() {
 
             button ("Simple mail") {action { replaceWith(SimpleMailView::class) }}
             button ("Programmed mail")
+            button ("Contacts") {action {replaceWith(ContactsView::class)}}
             button ("Settings") {
                 action {
                     replaceWith(SettingsView::class)
