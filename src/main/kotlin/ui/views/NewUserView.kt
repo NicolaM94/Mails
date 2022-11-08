@@ -1,6 +1,7 @@
 package ui.views
 
 import controllers.LoginController
+import controllers.LoginManager
 import logic.LoginCredentials
 import tornadofx.*
 import ui.snippets.KeygenVerification
@@ -29,11 +30,11 @@ class NewUserView :View() {
             else -> {
                 println("Checks passed")
                 println("Writing changes...")
-                controller.currentData.addCredentials(LoginCredentials(
+                LoginManager.addCredentials(LoginCredentials(
                     controller.usernameHolder.value,
                     controller.passwordHolder.value
                 ))
-                controller.currentData.writeChanges()
+                LoginManager.writeChanges()
                 replaceWith(LoginView::class)
             }
         }

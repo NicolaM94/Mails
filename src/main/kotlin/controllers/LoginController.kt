@@ -18,11 +18,13 @@ object LoginManager {
     var credentials = mutableListOf<LoginCredentials>()
 
     init {
+        //Reads src file and collects json objects to populate credentials
         val reader = File("src/main/kotlin/logins.json").readText()
         val typeToken = object : TypeToken<List<LoginCredentials>>() {}.type
         credentials = gson.fromJson(reader,typeToken)
     }
 
+    //Returns the list of users names. Used in fun verifyUsername and fun verifyUsernameTaken in LoginController
     fun users () :List<String> {
         val userList :MutableList<String> = mutableListOf()
         for (c in credentials) {
@@ -31,10 +33,12 @@ object LoginManager {
         return userList
     }
 
+    //Adds a new user to the user pool var credentials. Used in verifyNewUser
     fun addCredentials (credentialsToAdd : LoginCredentials) {
         credentials.add(credentialsToAdd)
     }
 
+    //Actually writes down new user to the src json file. Used in verifyNewUser
     fun writeChanges () {
         val toWrite = gson.toJson(credentials)
         with(File("src/main/kotlin/logins.json")) {
@@ -44,30 +48,33 @@ object LoginManager {
 }
 
 /**
- * Holds controller for the [LoginView]
+ * Class controller for [LoginView].
+ * Holds references used as values in the view presented to the user.
+ * Collects data from [LoginManager]
+ * @see LoginView
  */
 class LoginController :Controller() {
 
+    //Keygen used as privileged user validation to create new users
     val keygen = "1234567890"
-    val currentData = LoginManager
 
+    //String properties placeholders for the view
     var usernameHolder = SimpleStringProperty()
     var passwordHolder = SimpleStringProperty()
     var passwordRepetedHolder = SimpleStringProperty()
     var keygenHolder = SimpleStringProperty()
 
-
-
-    /**Verifies if user is already taken*/
+    //Verifies username taken in VerifyNewUser
     fun verifyUsernameTaken():Boolean{
-        return usernameHolder.value in currentData.users()
+        return usernameHolder.value in LoginManager.users()
     }
 
-    /** Verifies password match*/
+    // Verifies password match in VerifyNewUser
     fun verifyPasswdMatch () :Boolean {
         return passwordHolder.value == passwordRepetedHolder.value
     }
 
+    //Verifies password math used in VerifyLogin
     fun verifyPassword () :Boolean {
         for (c in LoginManager.credentials) {
             if (c.username == usernameHolder.value && c.password == passwordHolder.value) return true
@@ -75,12 +82,13 @@ class LoginController :Controller() {
         return false
     }
 
+    //Verifies if username is in the users used in VerifyNewUser
     fun verifyUsername() :Boolean {
-        return usernameHolder.value in currentData.users()
+        return usernameHolder.value in LoginManager.users()
     }
 
+    //Verifies keygen right
     fun verifyKeygen () :Boolean {
         return keygen == keygenHolder.value
     }
-
 }
